@@ -14,4 +14,4 @@ Clean cache:
 docker system prune -a
 
 Comando profesor (limpia y build de nuevo):
-docker comose down && docker compose build && docker compose up
+docker compose down && docker compose build && docker compose up
