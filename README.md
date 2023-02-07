@@ -11,7 +11,7 @@ Build:
 docker compose build
 
 Clean cache:
-docker system prune -a
+docker system prune -a -f
 
 Comando profesor (limpia y build de nuevo):
 docker comose down && docker compose build && docker compose up
