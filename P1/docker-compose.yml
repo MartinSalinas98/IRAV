@@ -4,5 +4,6 @@ services:
     ports:
       - 8080:80
       - 8081:81
+      - 13000:3000
     volumes:
       - './apache/public_html:/usr/local/apache2/htdocs'

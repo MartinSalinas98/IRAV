@@ -29,4 +29,4 @@ RUN a2ensite apache
 RUN a2ensite node
 
 # Launching apache
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+CMD ["node", "/var/www/sites/node/ejemplo.js &", "&&", "apache2ctl", "-D", "FOREGROUND"]
