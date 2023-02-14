@@ -7,3 +7,4 @@ services:
       - 13000:3000
     volumes:
       - './apache/public_html:/usr/local/apache2/htdocs'
+      - './node/public_html:/usr/local/apache2/htdocs'
