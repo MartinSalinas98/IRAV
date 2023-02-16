@@ -1,7 +1,6 @@
 services:
   irav-server:
     build: .
-    tty: true
     ports:
       - 8080:80
       - 8081:81
@@ -9,3 +8,4 @@ services:
     volumes:
       - './apache/public_html:/usr/local/apache2/htdocs/apache'
       - './node/public_html:/usr/local/apache2/htdocs/node'
+      - './logs/supervisor:/var/log/supervisor'

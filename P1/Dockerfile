@@ -12,13 +12,13 @@ RUN apt-get update
 RUN apt install nodejs npm -y
 
 # Insatalling supervisord
-RUN apt install supervisor
+RUN apt install supervisor -y
 
 # (NODE) Esto lo mismo va despues de la copia de ficheros de node
 WORKDIR /usr/local/apache2/htdocs
 
 # (NODE) Express o cualquier modulo
-RUN npm install express 
+RUN npm install express -y
 
 
 # Copying virtual host files
@@ -44,6 +44,7 @@ COPY ./supervisord/config.conf /etc/supervisor/conf.d/supervisord.conf
 # Launching apache
 # CMD ["node", "/var/www/sites/node/ejemplo.js &", "&&", "apache2ctl", "-D", "FOREGROUND"]
 # Esto se debe tambien a tener el volume en lugar del copy CREO
-#CMD pwd && find . -name "ejemplo.js"
+#CMD ["apache2ctl", "-D", "FOREGROUND"]
 #CMD ["node", "node/ejemplo.js", "&", "&&", "apache2ctl", "-D", "FOREGROUND"]
-CMD ["/usr/bin/supervisord"]
+#CMD ["/usr/bin/supervisord"]
+CMD ["vi"]
