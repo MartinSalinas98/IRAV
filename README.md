@@ -15,3 +15,6 @@ docker system prune -a -f
 
 Comando profesor (limpia y build de nuevo):
 docker compose down && docker compose build && docker compose up
+
+Abrir terminal una vez existe la imagen (aunque se cierre):
+docker run --interactive --tty --entrypoint /bin/sh p1-irav-server:latest
