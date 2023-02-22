@@ -1,7 +1,0 @@
-services:
-  irav-server:
-    build: .
-    ports:
-      - 8081:81
-    volumes:
-      - './public_html:/usr/local/apache2/htdocs'
