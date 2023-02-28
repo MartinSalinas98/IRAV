@@ -44,6 +44,8 @@ COPY ./supervisord/config.conf /etc/supervisor/supervisord.conf
 # VSFTP
 RUN apt-get install vsftpd -y
 COPY ./vsftpd/vsftpd.conf /etc/
+
+# If user comes from Windows, copied config file needs to be changed to unix encoding
 RUN apt-get install dos2unix -y
 RUN dos2unix /etc/vsftpd.conf
 
