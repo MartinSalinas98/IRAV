@@ -44,6 +44,8 @@ COPY ./supervisord/config.conf /etc/supervisor/supervisord.conf
 # VSFTP
 RUN apt-get install vsftpd -y
 COPY ./vsftpd/vsftpd.conf /etc/
+RUN apt-get install dos2unix -y
+RUN dos2unix /etc/vsftpd.conf
 
 # Crear usuario vsftp
 RUN adduser martin
