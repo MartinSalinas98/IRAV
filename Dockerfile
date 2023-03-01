@@ -9,20 +9,20 @@ RUN apt-get install dos2unix -y
 
 #APACHE
 # Installing apache
-RUN apt-get install apache2 -y
+RUN apt-get install apache2 apache2-utils -y
 
 # Copying virtual host files
 COPY ./apache/config_files/ports.conf /etc/apache2/
-COPY ./apache/config_files/apache.conf /etc/apache2/sites-available/apache.conf
+COPY ./apache/config_files/apache.conf /etc/apache2/sites-available/
+COPY ./apache/config_files/node.conf /etc/apache2/sites-available/
 
 WORKDIR /usr/local/apache2/htdocs
 
-# Exposing apache port
-EXPOSE 80
-
 # Enabling sites
+RUN a2enmod proxy_http
 RUN a2dissite 000-default.conf
 RUN a2ensite apache.conf
+RUN a2ensite node.conf
 
 # NODE
 # Install node and the node installer 
@@ -34,9 +34,6 @@ WORKDIR /usr/local/apache2/htdocs
 
 # Install Express or any other module needed
 RUN npm install express -y
-
-#Exposing node port
-EXPOSE 3000
 
 # SUPERVISORD
 # Insatalling supervisord
@@ -57,8 +54,12 @@ RUN chown nobody:nogroup /home/martin/ftp
 
 RUN mkdir -p /var/run/vsftpd/empty
 
-EXPOSE 20
-EXPOSE 21
+# Exposing apache ports
+EXPOSE 80 81
+
+# Exposing ftp ports
+EXPOSE 20 21
+EXPOSE 40000-40100
 
 # Launching apache
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
