@@ -10,4 +10,3 @@ services:
     volumes:
       - './apache/public_html:/usr/local/apache2/htdocs/apache'
       - './node/public_html:/usr/local/apache2/htdocs/node'
-      - './logs/supervisor:/var/log/supervisor'
