@@ -54,6 +54,10 @@ RUN chown nobody:nogroup /home/martin/ftp
 
 RUN mkdir -p /var/run/vsftpd/empty
 
+# Copying apache and node directories
+COPY ./apache/public_html /usr/local/apache2/htdocs/apache
+COPY ./node/public_html /usr/local/apache2/htdocs/node
+
 # Exposing apache ports
 EXPOSE 80 81
 
