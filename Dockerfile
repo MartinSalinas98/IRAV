@@ -49,8 +49,8 @@ RUN dos2unix /etc/vsftpd.conf
 # Crear usuario vsftp
 RUN adduser martin
 RUN echo "contrasena\ncontrasena" | passwd martin
-RUN mkdir /home/martin/ftp
-RUN chown nobody:nogroup /home/martin/ftp
+RUN mkdir -p /home/martin/ftp/upload
+RUN chown martin:martin /home/martin/ftp/upload
 
 RUN mkdir -p /var/run/vsftpd/empty
 
